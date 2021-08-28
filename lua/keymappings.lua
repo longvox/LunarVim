@@ -66,19 +66,29 @@ function M.config()
     insert_mode = {
       -- 'jk' for quitting insert mode
       ["jk"] = "<ESC>",
+
       -- 'kj' for quitting insert mode
       ["kj"] = "<ESC>",
+
       -- 'jj' for quitting insert mode
       ["jj"] = "<ESC>",
+
       -- Move current line / block with Alt-j/k ala vscode.
-      ["<A-j>"] = "<Esc>:m .+1<CR>==gi",
-      -- Move current line / block with Alt-j/k ala vscode.
-      ["<A-k>"] = "<Esc>:m .-2<CR>==gi",
+      ["∆"] = "<Esc>:m .+1<CR>==gi",
+      ["˚"] = "<Esc>:m .-2<CR>==gi",
+
+      -- Set time
+      ["<F3>"] = "<C-R>=strftime(\"%Y-%m-%d %a %I:%M %p\")<CR>",
+      
+      -- Uppercase current word
+      ["<C-U>"] = "<esc>viwUA",
+
       -- navigation
       ["<A-Up>"] = "<C-\\><C-N><C-w>k",
       ["<A-Down>"] = "<C-\\><C-N><C-w>j",
       ["<A-Left>"] = "<C-\\><C-N><C-w>h",
       ["<A-Right>"] = "<C-\\><C-N><C-w>l",
+
       -- navigate tab completion with <c-j> and <c-k>
       -- runs conditionally
       ["<C-j>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
@@ -87,6 +97,57 @@ function M.config()
 
     ---@usage change or add keymappings for normal mode
     normal_mode = {
+      --- Hardcore
+      ["<up>"] = ":echoe \"please use \'k\' key\"<CR>",
+      ["<down>"] =  ":echoe \"please use \'j\' key\"<CR>",
+      ["<left>"] = ":echoe \"please use \'h\' key\"<CR>",
+      ["<right>"] = ":echoe \"please use \'l\' key\"<CR>",
+
+      -- Map hjkl
+      ["j"] = "gj",
+      ["k"] = "gk",
+      ["H"] = "h",
+      ["L"] = "l",
+      ["l"] = "w",
+      ["h"] = "b",
+
+      -- Map to no replace buffer copy
+      ["d"] = "\"_d",
+      ["D"] = "\"_D",
+      ["c"] = "\"_c",
+      ["C"] = "\"_C",
+
+      -- Add simple hightlight removal
+      ["<ESC><ESC>"] = ":nohlsearch<CR>",
+
+      -- keep search results at the center of screen
+      ["n"] = "nzz",
+      ["N"] = "Nzz",
+      ["*"] = "*zz",
+      ["#"] = "#zz",
+      ["g*"] = "g*zz",
+      ["g#"] = "g#zz",
+      ["gd"] = "gdzz",
+      ["[["] = "[[zz",
+      ["]]"] = "]]zz",
+
+      -- Don't use recording now
+      ["q"] = "<Nop>",
+
+      -- Set time
+      ["<F3>"] = "i<C-R>=strftime(\"%Y-%m-%d %a %I:%M %p\")<CR><Esc>",
+
+      -- Move to beginning/end of line
+      ["b"] = "^",
+      ["e"] = "$",
+
+      -- $/^ doesn't do anything
+      ["$"] = "<nop>",
+      ["^"] = "<nop>",
+
+      -- Quickly add empty lines
+      ["<C-o>"] =  ":<c-u>put =repeat(nr2char(10), v:count1)<cr>",
+
       -- Better window movement
       ["<C-h>"] = "<C-w>h",
       ["<C-j>"] = "<C-w>j",
@@ -100,12 +161,16 @@ function M.config()
       ["<C-Right>"] = ":vertical resize +2<CR>",
 
       -- Tab switch buffer
-      ["<S-l>"] = ":BufferNext<CR>",
-      ["<S-h>"] = ":BufferPrevious<CR>",
+      ["¬"] = ":BufferNext<CR>",
+      ["˙"] = ":BufferPrevious<CR>",
+
+      -- switch tab
+      ["<S-¬>"] = ":tabnext<CR>",
+      ["<S-˙>"] = ":tabprevious<CR>",
 
       -- Move current line / block with Alt-j/k a la vscode.
-      ["<A-j>"] = ":m .+1<CR>==",
-      ["<A-k>"] = ":m .-2<CR>==",
+      ["∆"] = ":m .+1<CR>==",
+      ["˚"] = ":m .-2<CR>==",
 
       -- QuickFix
       ["]q"] = ":cnext<CR>",
@@ -120,6 +185,9 @@ function M.config()
       ["<C-j>"] = "<C-\\><C-N><C-w>j",
       ["<C-k>"] = "<C-\\><C-N><C-w>k",
       ["<C-l>"] = "<C-\\><C-N><C-w>l",
+      
+      -- Replace
+      ["¬Æ"] = ":%s//gI<Left><Left><Left>",
     },
 
     ---@usage change or add keymappings for visual mode
@@ -130,17 +198,30 @@ function M.config()
 
       -- ["p"] = '"0p',
       -- ["P"] = '"0P',
+
+      -- map hjkl
+      ["j"] = "gj",
+      ["k"] = "gk",
+      ["H"] = "h",
+      ["L"] = "l",
+      ["l"] = "w",
+      ["h"] = "b",
+
+      -- map to no replace buffer copy
+      ["d"] = "\"_d",
+      ["D"] = "\"_D",
+      ["c"] = "\"_c",
+      ["C"] = "\"_C",
+
+      -- Select all text
+      ["a"] = "ggVG",
     },
 
     ---@usage change or add keymappings for visual block mode
     visual_block_mode = {
-      -- Move selected line / block of text in visual mode
-      ["K"] = ":move '<-2<CR>gv-gv",
-      ["J"] = ":move '>+1<CR>gv-gv",
-
-      -- Move current line / block with Alt-j/k ala vscode.
-      ["<A-j>"] = ":m '>+1<CR>gv-gv",
-      ["<A-k>"] = ":m '<-2<CR>gv-gv",
+      -- Move current line / block with Alt-j/k a la vscode.
+      ["∆"] = ":m '>+1<cr>gv=gv",
+      ["˚"] = ":m '<-2<cr>gv=gv",
     },
   }
 

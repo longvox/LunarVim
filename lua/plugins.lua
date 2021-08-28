@@ -231,4 +231,6 @@ return {
     end,
     disable = not lvim.builtin.terminal.active,
   },
+  {'nn1ks/vim-darkspace'}
+
 }

@@ -4,11 +4,11 @@ if vim.fn.exists "syntax_on" then
 end
 vim.o.background = "dark"
 vim.o.termguicolors = true
-vim.g.colors_name = "spacegray"
+vim.g.colors_name = "darkspace"
 
-local util = require "spacegray.util"
-Config = require "spacegray.config"
-C = require "spacegray.palette"
+local util = require "gui.util"
+Config = require "gui.config"
+C = require "gui.palette"
 
 local async
 async = vim.loop.new_async(vim.schedule_wrap(function()
@@ -20,12 +20,12 @@ async = vim.loop.new_async(vim.schedule_wrap(function()
   async:close()
 end))
 
-local highlights = require "spacegray.highlights"
-local Treesitter = require "spacegray.Treesitter"
-local markdown = require "spacegray.markdown"
-local Whichkey = require "spacegray.Whichkey"
-local Git = require "spacegray.Git"
-local LSP = require "spacegray.LSP"
+local highlights = require "gui.highlights"
+local Treesitter = require "gui.Treesitter"
+local markdown = require "gui.markdown"
+local Whichkey = require "gui.Whichkey"
+local Git = require "gui.Git"
+local LSP = require "gui.LSP"
 
 local skeletons = {
   highlights,

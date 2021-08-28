@@ -26,15 +26,13 @@ M.config = function()
         group = "+", -- symbol prepended to a group
       },
       window = {
-        border = "single", -- none, single, double, shadow
+        border = "none", -- none, single, double, shadow
         position = "bottom", -- bottom, top
-        margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-        padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-      },
+     },
       layout = {
-        height = { min = 4, max = 25 }, -- min and max height of the columns
-        width = { min = 20, max = 50 }, -- min and max width of the columns
+        height = { min = 2, max = 25}, -- min and max height of the columns
         spacing = 3, -- spacing between columns
+        align = "center", -- align columns left, center or right
       },
       hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
       show_help = true, -- show help message on the command line when the popup is visible
@@ -69,28 +67,17 @@ M.config = function()
       ["e"] = { "<cmd>lua require'core.nvimtree'.toggle_tree()<CR>", "Explorer" },
       ["f"] = { "<cmd>Telescope find_files<CR>", "Find File" },
       ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
+      ["t"] = { "<cmd>:ToggleTerm size=10 direction=horizontal<cr>", "terminal" },
       b = {
         name = "Buffers",
         j = { "<cmd>BufferPick<cr>", "jump to buffer" },
         f = { "<cmd>Telescope buffers<cr>", "Find buffer" },
         w = { "<cmd>BufferWipeout<cr>", "wipeout buffer" },
-        e = {
-          "<cmd>BufferCloseAllButCurrent<cr>",
-          "close all but current buffer",
-        },
+        e = { "<cmd>BufferCloseAllButCurrent<cr>", "close all but current buffer" },
         h = { "<cmd>BufferCloseBuffersLeft<cr>", "close all buffers to the left" },
-        l = {
-          "<cmd>BufferCloseBuffersRight<cr>",
-          "close all BufferLines to the right",
-        },
-        D = {
-          "<cmd>BufferOrderByDirectory<cr>",
-          "sort BufferLines automatically by directory",
-        },
-        L = {
-          "<cmd>BufferOrderByLanguage<cr>",
-          "sort BufferLines automatically by language",
-        },
+        l = { "<cmd>BufferCloseBuffersRight<cr>", "close all BufferLines to the right" },
+        D = { "<cmd>BufferOrderByDirectory<cr>", "sort BufferLines automatically by directory" },
+        L = { "<cmd>BufferOrderByLanguage<cr>", "sort BufferLines automatically by language" },
       },
       p = {
         name = "Packer",
@@ -118,41 +105,24 @@ M.config = function()
         r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
         R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
         s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-        u = {
-          "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-          "Undo Stage Hunk",
-        },
+        u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk",},
         o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
         b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
         c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-        C = {
-          "<cmd>Telescope git_bcommits<cr>",
-          "Checkout commit(for current file)",
+        C = { "<cmd>Telescope git_bcommits<cr>", "Checkout commit(for current file)",
         },
       },
 
       l = {
         name = "LSP",
         a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-        d = {
-          "<cmd>Telescope lsp_document_diagnostics<cr>",
-          "Document Diagnostics",
-        },
-        w = {
-          "<cmd>Telescope lsp_workspace_diagnostics<cr>",
-          "Workspace Diagnostics",
-        },
+        d = { "<cmd>Telescope lsp_document_diagnostics<cr>", "Document Diagnostics" },
+        w = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics" },
         -- f = { "<cmd>silent FormatWrite<cr>", "Format" },
         f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
         i = { "<cmd>LspInfo<cr>", "Info" },
-        j = {
-          "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = lvim.lsp.popup_border}})<cr>",
-          "Next Diagnostic",
-        },
-        k = {
-          "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = lvim.lsp.popup_border}})<cr>",
-          "Prev Diagnostic",
-        },
+        j = { "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = lvim.lsp.popup_border}})<cr>", "Next Diagnostic" },
+        k = { "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = lvim.lsp.popup_border}})<cr>", "Prev Diagnostic" },
         p = {
           name = "Peek",
           d = { "<cmd>lua require('lsp.peek').Peek('definition')<cr>", "Definition" },
@@ -162,33 +132,21 @@ M.config = function()
         q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-        S = {
-          "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-          "Workspace Symbols",
-        },
+        S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
       },
       L = {
         name = "+LunarVim",
         k = { "<cmd>lua require('keymappings').print()<cr>", "View LunarVim's default keymappings" },
-        i = {
-          "<cmd>lua require('core.info').toggle_popup(vim.bo.filetype)<cr>",
-          "Toggle LunarVim Info",
-        },
+        i = { "<cmd>lua require('core.info').toggle_popup(vim.bo.filetype)<cr>", "Toggle LunarVim Info" },
         l = {
           name = "+logs",
-          d = {
-            "<cmd>lua require('core.terminal').toggle_log_view('lunarvim')<cr>",
-            "view default log",
-          },
+          d = { "<cmd>lua require('core.terminal').toggle_log_view('lunarvim')<cr>", "view default log" },
           D = { "<cmd>edit ~/.cache/nvim/lunarvim.log<cr>", "Open the default logfile" },
           n = { "<cmd>lua require('core.terminal').toggle_log_view('lsp')<cr>", "view lsp log" },
           N = { "<cmd>edit ~/.cache/nvim/log<cr>", "Open the Neovim logfile" },
           l = { "<cmd>lua require('core.terminal').toggle_log_view('nvim')<cr>", "view neovim log" },
           L = { "<cmd>edit ~/.cache/nvim/lsp.log<cr>", "Open the LSP logfile" },
-          p = {
-            "<cmd>lua require('core.terminal').toggle_log_view('packer.nvim')<cr>",
-            "view packer log",
-          },
+          p = { "<cmd>lua require('core.terminal').toggle_log_view('packer.nvim')<cr>", "view packer log" },
           P = { "<cmd>edit ~/.cache/nvim/packer.nvim.log<cr>", "Open the Packer logfile" },
         },
       },
@@ -204,14 +162,7 @@ M.config = function()
         t = { "<cmd>Telescope live_grep<cr>", "Text" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
         C = { "<cmd>Telescope commands<cr>", "Commands" },
-        p = {
-          "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
-          "Colorscheme with Preview",
-        },
-      },
-      T = {
-        name = "Treesitter",
-        i = { ":TSConfigInfo<cr>", "Info" },
+        p = { "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>", "Colorscheme with Preview" },
       },
     },
   }
