@@ -231,6 +231,6 @@ return {
     end,
     disable = not lvim.builtin.terminal.active,
   },
-  {'nn1ks/vim-darkspace'}
-
+  {'nn1ks/vim-darkspace'},
+  {'captbaritone/better-indent-support-for-php-with-html'}
 }

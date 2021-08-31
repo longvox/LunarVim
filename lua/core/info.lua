@@ -5,18 +5,12 @@ local indent = "  "
 
 M.banner = {
   " ",
-  indent
-    .. "⠀⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀     ⠀⠀⠀   ⠀⠀ ⣺⡿⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀",
-  indent
-    .. "⠀⣿⠇⠀⠀⠀⠀⠀⣤⡄⠀⠀⢠⣤⡄⠀.⣠⣤⣤⣤⡀⠀⠀⢀⣤⣤⣤⣤⡄⠀⠀⠀⣤⣄⣤⣤⣤⠀⠀ ⣿⣯  ⣿⡟⠀   ⣤⣤⠀⠀⠀⠀⣠⣤⣤⣤⣄⣤⣤",
-  indent
-    .. "⢠⣿⠀⠀⠀⠀⠀⠀⣿⠃⠀⠀⣸⣿⠁⠀⣿⣿⠉⠀⠈⣿⡇⠀⠀⠛⠋⠀⠀⢹⣿⠀⠀⠀⣿⠏⠀⠸⠿⠃⠀⣿⣿⠀⣰⡟⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀⣿⡟⢸⣿⡇⢀⣿",
-  indent
-    .. "⣸⡇⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⣿⡟⠀⢠⣿⡇⠀⠀⢰⣿⡇⠀⣰⣾⠟⠛⠛⣻⡇⠀⠀⢸⡿⠀⠀⠀⠀⠀⠀⢻⣿⢰⣿⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀⠀⢸⣿⠇⢸⣿⠀⢸⡏",
-  indent
-    .. "⣿⣧⣤⣤⣤⡄⠀⠘⣿⣤⣤⡤⣿⠇⠀⢸⣿⠁⠀⠀⣼⣿⠀⠀⢿⣿⣤⣤⠔⣿⠃⠀⠀⣾⡇⠀⠀⠀⠀⠀⠀⢸⣿⣿⠋⠀⠀⠀⢠⣤⣤⣿⣥⣤⡄⠀⣼⣿⠀⣸⡏⠀⣿⠃",
-  indent
-    .. "⠉⠉⠉⠉⠉⠁⠀⠀⠈⠉⠉⠀⠉⠀⠀⠈⠉⠀⠀⠀⠉⠉⠀⠀⠀⠉⠉⠁⠈⠉⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠁⠀⠉⠁⠀⠉⠁⠀⠉⠀",
+  indent .. "⠀⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀     ⠀⠀⠀   ⠀⠀ ⣺⡿⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀",
+  indent .. "⠀⣿⠇⠀⠀⠀⠀⠀⣤⡄⠀⠀⢠⣤⡄⠀.⣠⣤⣤⣤⡀⠀⠀⢀⣤⣤⣤⣤⡄⠀⠀⠀⣤⣄⣤⣤⣤⠀⠀ ⣿⣯  ⣿⡟⠀   ⣤⣤⠀⠀⠀⠀⣠⣤⣤⣤⣄⣤⣤",
+  indent .. "⢠⣿⠀⠀⠀⠀⠀⠀⣿⠃⠀⠀⣸⣿⠁⠀⣿⣿⠉⠀⠈⣿⡇⠀⠀⠛⠋⠀⠀⢹⣿⠀⠀⠀⣿⠏⠀⠸⠿⠃⠀⣿⣿⠀⣰⡟⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀⣿⡟⢸⣿⡇⢀⣿",
+  indent .. "⣸⡇⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⣿⡟⠀⢠⣿⡇⠀⠀⢰⣿⡇⠀⣰⣾⠟⠛⠛⣻⡇⠀⠀⢸⡿⠀⠀⠀⠀⠀⠀⢻⣿⢰⣿⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀⠀⢸⣿⠇⢸⣿⠀⢸⡏",
+  indent .. "⣿⣧⣤⣤⣤⡄⠀⠘⣿⣤⣤⡤⣿⠇⠀⢸⣿⠁⠀⠀⣼⣿⠀⠀⢿⣿⣤⣤⠔⣿⠃⠀⠀⣾⡇⠀⠀⠀⠀⠀⠀⢸⣿⣿⠋⠀⠀⠀⢠⣤⣤⣿⣥⣤⡄⠀⣼⣿⠀⣸⡏⠀⣿⠃",
+  indent .. "⠉⠉⠉⠉⠉⠁⠀⠀⠈⠉⠉⠀⠉⠀⠀⠈⠉⠀⠀⠀⠉⠉⠀⠀⠀⠉⠉⠁⠈⠉⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠁⠀⠉⠁⠀⠉⠁⠀⠉⠀",
   "",
 }
 
@@ -27,19 +21,12 @@ end
 local function get_formatter_suggestion_msg(ft)
   local supported_formatters = u.get_supported_formatters_by_filetype(ft)
   return {
-    indent
-      .. "───────────────────────────────────────────────────────────────────",
-    "",
-    indent .. " HINT ",
-    "",
+    indent .. "───────────────────────────────────────────────────────────────────", "",
+    indent .. " HINT ", "",
     indent .. "* List of supported formatters: " .. str_list(supported_formatters),
     indent .. "* Configured formatter needs to be installed and executable.",
-    indent .. "* Enable installed formatter(s) with following config in ~/.config/lvim/config.lua",
-    "",
-    indent .. "  lvim.lang." .. tostring(ft) .. [[.formatting = { { exe = ']] .. table.concat(
-      supported_formatters,
-      "│"
-    ) .. [[' } }]],
+    indent .. "* Enable installed formatter(s) with following config in ~/.config/lvim/config.lua", "",
+    indent .. "  lvim.lang." .. tostring(ft) .. [[.formatting = { { exe = ']] .. table.concat(supported_formatters, "│") .. [[' } }]],
     "",
   }
 end
@@ -47,21 +34,12 @@ end
 local function get_linter_suggestion_msg(ft)
   local supported_linters = u.get_supported_linters_by_filetype(ft)
   return {
-    indent
-      .. "───────────────────────────────────────────────────────────────────",
-    "",
-    indent .. " HINT ",
-    "",
+    indent .. "───────────────────────────────────────────────────────────────────", "",
+    indent .. " HINT ", "",
     indent .. "* List of supported linters: " .. str_list(supported_linters),
     indent .. "* Configured linter needs to be installed and executable.",
-    indent .. "* Enable installed linter(s) with following config in ~/.config/lvim/config.lua",
-    "",
-    indent
-      .. "  lvim.lang."
-      .. tostring(ft)
-      .. [[.linters = { { exe = ']]
-      .. table.concat(supported_linters, "│")
-      .. [[' } }]],
+    indent .. "* Enable installed linter(s) with following config in ~/.config/lvim/config.lua", "",
+    indent .. "  lvim.lang." .. tostring(ft) .. [[.linters = { { exe = ']] .. table.concat(supported_linters, "│") .. [[' } }]],
     "",
   }
 end

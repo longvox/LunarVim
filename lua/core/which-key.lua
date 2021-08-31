@@ -66,8 +66,10 @@ M.config = function()
       ["c"] = { "<cmd>BufferClose!<CR>", "Close Buffer" },
       ["e"] = { "<cmd>lua require'core.nvimtree'.toggle_tree()<CR>", "Explorer" },
       ["f"] = { "<cmd>Telescope find_files<CR>", "Find File" },
-      ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-      ["t"] = { "<cmd>:ToggleTerm size=10 direction=horizontal<cr>", "terminal" },
+      ["n"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
+      ["t"] = { "<cmd>:ToggleTerm size=10 direction=horizontal<cr>", "Terminal" },
+      ["v"] = { "<C-W>v", "Split right" },
+      ["h"] = { "<C-W>s", "Split below" },
       b = {
         name = "Buffers",
         j = { "<cmd>BufferPick<cr>", "jump to buffer" },

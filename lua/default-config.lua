@@ -10,7 +10,7 @@ lvim = {
   colorscheme = "darkspace",
   line_wrap_cursor_movement = true,
   transparent_window = false,
-  format_on_save = true,
+  format_on_save = false,
   vsnip_dir = os.getenv "HOME" .. "/.config/snippets",
   database = { save_location = "~/.config/lunarvim_db", auto_execute = 1 },
   keys = {},

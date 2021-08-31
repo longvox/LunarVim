@@ -79,7 +79,7 @@ function M.config()
 
       -- Set time
       ["<F3>"] = "<C-R>=strftime(\"%Y-%m-%d %a %I:%M %p\")<CR>",
-      
+
       -- Uppercase current word
       ["<C-U>"] = "<esc>viwUA",
 
@@ -97,6 +97,7 @@ function M.config()
 
     ---@usage change or add keymappings for normal mode
     normal_mode = {
+      ["<space>"] = "<nop>",
       --- Hardcore
       ["<up>"] = ":echoe \"please use \'k\' key\"<CR>",
       ["<down>"] =  ":echoe \"please use \'j\' key\"<CR>",
@@ -185,9 +186,9 @@ function M.config()
       ["<C-j>"] = "<C-\\><C-N><C-w>j",
       ["<C-k>"] = "<C-\\><C-N><C-w>k",
       ["<C-l>"] = "<C-\\><C-N><C-w>l",
-      
+
       -- Replace
-      ["¬Æ"] = ":%s//gI<Left><Left><Left>",
+      ["®"] = ":%s//gI<Left><Left><Left>",
     },
 
     ---@usage change or add keymappings for visual mode

@@ -29,7 +29,7 @@ M.load_options = function()
     termguicolors = true, -- set term gui colors (most terminals support this)
     timeoutlen = 100, -- time to wait for a mapped sequence to complete (in milliseconds)
     title = true, -- set the title of window to the value of the titlestring
-    -- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
+    titlestring = "nvim - %<%f%=%l/%L", -- what the title of the window will be set to
     undodir = CACHE_PATH .. "/undo", -- set an undo directory
     undofile = true, -- enable persistent undo
     updatetime = 300, -- faster completion
@@ -37,21 +37,26 @@ M.load_options = function()
     expandtab = true, -- convert tabs to spaces
     shiftwidth = 2, -- the number of spaces inserted for each indentation
     tabstop = 2, -- insert 2 spaces for a tab
+    smarttab = true, -- Makes tabbing smarter will realize you have 2 vs 4
     cursorline = true, -- highlight the current line
     number = true, -- set numbered lines
-    relativenumber = false, -- set relative numbered lines
+    relativenumber = true, -- set relative numbered lines
     numberwidth = 4, -- set number column width to 2 {default 4}
     signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-    wrap = false, -- display lines as one long line
+    wrap = true, -- display lines as one long line
+    linebreak = true,
     spell = false,
     spelllang = "en",
     scrolloff = 8, -- is one of my fav
     sidescrolloff = 8,
-    wrap = true,
-    linebreak = true,
-    listchars =  { space = "·", tab = "›\\ ", precedes = "←", extends = "→" }
- } ---  VIM ONLY COMMANDS  ---cmd "filetype plugin on"cmd('let &titleold="' .. TERMINAL .. '"')cmd "set inccommand=split"cmd "set iskeyword+=-"
-
+    listchars =  { trail = "·", tab = "› ", precedes = "←", extends = "→" },
+ }
+  ---  VIM ONLY COMMANDS
+  vim.cmd "filetype plugin on"
+  vim.cmd('let &titleold="' .. TERMINAL .. '"')
+  vim.cmd "set inccommand=split"
+  vim.cmd "set iskeyword+=-"
+  vim.cmd [[ set list listchars=trail:·,tab:›\  ]]
   ---  SETTINGS  ---
 
   opt.shortmess:append "c"

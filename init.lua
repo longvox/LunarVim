@@ -11,7 +11,6 @@ vim.cmd [[
   set runtimepath^=~/.local/share/lunarvim/lvim/after
 ]]
 -- vim.opt.rtp:append() instead of vim.cmd ?
-
 local function file_exists(name)
   local f = io.open(name, "r")
   if f ~= nil then
@@ -53,6 +52,8 @@ utils.toggle_autoformat()
 local commands = require "core.commands"
 commands.load(commands.defaults)
 
+local wildignores = require "core.wildignores"
+wildignores.load(wildignores.defaults)
 require("lsp").config()
 
 local null_status_ok, null_ls = pcall(require, "null-ls")

@@ -5,8 +5,8 @@ M.config = function()
     active = true,
     keymap = {
       normal_mode = {
-        ["<S-l>"] = ":BufferNext<CR>",
-        ["<S-h>"] = ":BufferPrevious<CR>",
+        ["¬"] = ":BufferNext<CR>",
+        ["˙"] = ":BufferPrevious<CR>",
       },
     },
   }
