@@ -34,33 +34,20 @@ Wildignore.defaults = {
     let g:loaded_gitignore_wildignore = 1
   ]],
   [[
-    function! WildignoreFromGitignore(...)
-      let gitignore = (a:0 && !empty(a:1)) ? fnamemodify(a:1, ':p') : fnamemodify(expand('%'), ':p:h') . '/'
-      let gitignore .= '.gitignore'
-      if filereadable(gitignore)
+    let filename = '.gitignore'
+    if filereadable(filename)
         let igstring = ''
-        for oline in readfile(gitignore)
-          let line = substitute(oline, '\n|\r', '', "g")
-          echo line
-          if line =~ '^#' | con | endif
-          if line == ''   | con | endif
-          if line =~ '^!' | con | endif
-          if line =~ '\s' | con | endif
-          if line =~ '/$' | let igstring .= "," . line . "*" | con | endif
-          let igstring .= "," . line
+        for oline in readfile(filename)
+            let line = substitute(oline, '\s|\n|\r', '', "g")
+            if line =~ '^#' | con | endif
+            if line == '' | con  | endif
+            if line =~ '^!' | con  | endif
+            if line =~ '/$' | let igstring .= "," . line . "*" | con | endif
+            let igstring .= "," . line
         endfor
-        echo igstring
-        let execstring = "set wildignore+=".substitute(igstring, '^,', '', "g")
+        let execstring = "set wildignore=".substitute(igstring, '^,', '', "g")
         execute execstring
-      endif
-    endfunction
-
-    command -nargs=? WildignoreFromGitignore :call WildignoreFromGitignore(<q-args>)
-
-    augroup wildignorefromgitignore_fugitive
-        autocmd!
-        autocmd User Fugitive if exists('b:git_dir') | call WildignoreFromGitignore(fnamemodify(b:git_dir, ':h')) | endif
-    augroup END
+    endif
   ]]
 
 }

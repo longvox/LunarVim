@@ -20,7 +20,7 @@ lvim.autocommands = {
     { "BufRead", "*.zsh", "setlocal filetype=sh" },
     { "BufNewFile", "*.zsh", "setlocal filetype=sh" },
   },
-  _filetype_ = {
+  _filetype_tabwith = {
       { "FileType", "typescriptreact",  "setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab" },
       { "FileType", "scheme",           "setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab" },
       { "FileType", "typescript",       "setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab" },

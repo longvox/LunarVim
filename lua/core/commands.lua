@@ -12,6 +12,12 @@ M.defaults = {
   ]],
   -- :LvimInfo
   [[command! LvimInfo lua require('core.info').toggle_popup(vim.bo.filetype)]],
+  [[
+    let g:user_emmet_settings = { 'php': {'extends': 'html', 'filters' : 'c'}, 'xml': {'extends': 'html'}, 'haml': {'extends': 'html' }}
+  ]],
+  [[let g:user_emmet_leader_key='<leader>,']],
+  [[let g:user_emmet_mode='nv']],
+  [[set mps+=<:>]]
 }
 
 M.load = function(commands)

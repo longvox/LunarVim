@@ -74,8 +74,8 @@ function M.config()
       ["jj"] = "<ESC>",
 
       -- Move current line / block with Alt-j/k ala vscode.
-      ["∆"] = "<Esc>:m .+1<CR>==gi",
-      ["˚"] = "<Esc>:m .-2<CR>==gi",
+      ["Ô"] = "<Esc>:m .+1<CR>==gi",
+      [""] = "<Esc>:m .-2<CR>==gi",
 
       -- Set time
       ["<F3>"] = "<C-R>=strftime(\"%Y-%m-%d %a %I:%M %p\")<CR>",
@@ -84,15 +84,15 @@ function M.config()
       ["<C-U>"] = "<esc>viwUA",
 
       -- navigation
-      ["<A-Up>"] = "<C-\\><C-N><C-w>k",
-      ["<A-Down>"] = "<C-\\><C-N><C-w>j",
-      ["<A-Left>"] = "<C-\\><C-N><C-w>h",
-      ["<A-Right>"] = "<C-\\><C-N><C-w>l",
+      ["<C-k>"] = "<C-\\><C-N><C-w>k",
+      ["<C-j>"] = "<C-\\><C-N><C-w>j",
+      ["<C-h>"] = "<C-\\><C-N><C-w>h",
+      ["<C-l>"] = "<C-\\><C-N><C-w>l",
 
       -- navigate tab completion with <c-j> and <c-k>
       -- runs conditionally
-      ["<C-j>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
-      ["<C-k>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
+      ["<tab>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
+      ["<S-tab>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
     },
 
     ---@usage change or add keymappings for normal mode
@@ -105,6 +105,9 @@ function M.config()
       ["<right>"] = ":echoe \"please use \'l\' key\"<CR>",
 
       -- Map hjkl
+
+      ["∆"] = "5gj",
+      ["˚"] = "5gk",
       ["j"] = "gj",
       ["k"] = "gk",
       ["H"] = "h",
@@ -170,8 +173,8 @@ function M.config()
       ["<S-˙>"] = ":tabprevious<CR>",
 
       -- Move current line / block with Alt-j/k a la vscode.
-      ["∆"] = ":m .+1<CR>==",
-      ["˚"] = ":m .-2<CR>==",
+      ["Ô"] = ":m .+1<CR>==",
+      [""] = ":m .-2<CR>==",
 
       -- QuickFix
       ["]q"] = ":cnext<CR>",
@@ -186,9 +189,6 @@ function M.config()
       ["<C-j>"] = "<C-\\><C-N><C-w>j",
       ["<C-k>"] = "<C-\\><C-N><C-w>k",
       ["<C-l>"] = "<C-\\><C-N><C-w>l",
-
-      -- Replace
-      ["®"] = ":%s//gI<Left><Left><Left>",
     },
 
     ---@usage change or add keymappings for visual mode
@@ -221,8 +221,8 @@ function M.config()
     ---@usage change or add keymappings for visual block mode
     visual_block_mode = {
       -- Move current line / block with Alt-j/k a la vscode.
-      ["∆"] = ":m '>+1<cr>gv=gv",
-      ["˚"] = ":m '<-2<cr>gv=gv",
+      ["Ô"] = ":m '>+1<cr>gv=gv",
+      [""] = ":m '<-2<cr>gv=gv",
     },
   }
 

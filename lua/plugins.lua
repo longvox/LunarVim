@@ -21,6 +21,12 @@ return {
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
+    requires = {
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        run = "make"
+      }
+    },
     config = function()
       require("core.telescope").setup()
       if lvim.builtin.telescope.on_config_done then
@@ -232,5 +238,24 @@ return {
     disable = not lvim.builtin.terminal.active,
   },
   {'nn1ks/vim-darkspace'},
-  {'captbaritone/better-indent-support-for-php-with-html'}
+  {'captbaritone/better-indent-support-for-php-with-html'},
+  {'mattn/emmet-vim'},
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require'colorizer'.setup({ "*" }, {
+         RGB = true, -- #RGB hex codes
+         RRGGBB = true, -- #RRGGBB hex codes
+         names = true, -- "Name" codes like Blue
+         RRGGBBAA = true, -- #RRGGBBAA hex codes
+         rgb_fn = true, -- CSS rgb() and rgba() functions
+         hsl_fn = true, -- CSS hsl() and hsla() functions
+         css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+         css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+         -- Available modes: foreground, background
+         mode = "background", -- Set the display mode.
+      })
+    end,
+  },
+  { 'christoomey/vim-tmux-navigator' }
 }

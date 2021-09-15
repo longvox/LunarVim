@@ -32,15 +32,18 @@ M.config = function()
         unmerged = "",
         renamed = "➜",
         deleted = "",
-        untracked = "U",
+        untracked = "★",
         ignored = "◌",
       },
       folder = {
+        arrow_open = "",
+        arrow_closed = "",
         default = "",
         open = "",
         empty = "",
         empty_open = "",
         symlink = "",
+        symlink_open = "",
       },
     },
   }
@@ -93,8 +96,8 @@ M.focus_or_close = function()
   else
     view.open()
     if package.loaded["bufferline.state"] and lvim.builtin.nvimtree.side == "left" then
-      -- require'bufferline.state'.set_offset(lvim.builtin.nvimtree.width + 1, 'File Explorer')
-      require("bufferline.state").set_offset(lvim.builtin.nvimtree.width + 1, "")
+      require'bufferline.state'.set_offset(lvim.builtin.nvimtree.width + 1, 'File Explorer')
+      -- require("bufferline.state").set_offset(lvim.builtin.nvimtree.width + 1, "")
     end
   end
 end
@@ -111,8 +114,8 @@ M.toggle_tree = function()
     end
   else
     if package.loaded["bufferline.state"] and lvim.builtin.nvimtree.side == "left" then
-      -- require'bufferline.state'.set_offset(lvim.builtin.nvimtree.width + 1, 'File Explorer')
-      require("bufferline.state").set_offset(lvim.builtin.nvimtree.width + 1, "")
+      require'bufferline.state'.set_offset(lvim.builtin.nvimtree.width + 1, 'File Explorer')
+      -- require("bufferline.state").set_offset(lvim.builtin.nvimtree.width + 1, "")
     end
     require("nvim-tree").toggle()
   end
